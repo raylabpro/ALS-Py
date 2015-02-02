@@ -1,0 +1,122 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% if title %}
+    <title>{{ title }} - FLAPI</title>
+    {% else %}
+    <title>Flask API - FLAPI</title>
+    {% endif %}
+
+    <link rel='stylesheet' href="{{ url_for('.static', filename='css/bootstrap.css') }}" type='text/css'/>
+    <link rel="stylesheet" href="{{ url_for('.static', filename='css/font-awesome.min.css') }}" type='text/css'>
+    <link rel='stylesheet' href="{{ url_for('.static', filename='css/style.css') }}" type='text/css'/>
+    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900' type='text/css'>
+</head>
+
+<body>
+<div class="header">
+    <div class="container">
+        <div class="logo"><a href="index.html">
+            <img src="{{ url_for('.static', filename='images/logo.png') }}" alt="Nova"></a>
+        </div>
+        <div class="menu">
+            <a class="toggleMenu" href="#"><img src="{{ url_for('.static', filename='images/nav_icon.png') }}" alt=""/> </a>
+            <ul class="nav" id="nav">
+                <li class="current"><a href="{{ url_for('index_handler') }}">Home</a></li>
+                <li><a href="/api/browse/">Browse API</a></li>
+                <li><a href="{{ url_for('logout_handler') }}">Logout</a></li>
+                <div class="clear"></div>
+            </ul>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+
+<div class="banner text-center">
+    <div class="container">
+        <div class="banner-info">
+            <h1>Lorem ipsum dolor sit amet</h1>
+            <p>nteger nec odio praesent libero. Sed cursus ante dapibus diamsed nisi.<br>Nulla quis sem at nibh elementum imperdiet</p>
+            <label class="page-scroll"><a class="banner-btn class scroll" href="#feature"><i class="fa fa-angle-double-down fa-4x"></i></a></label>
+        </div>
+    </div>
+</div>
+
+<div class="main">
+    {% block content %}{% endblock %}
+    <div class="footer">
+        <div class="footer_midle">
+            <div class='container'>
+                <div class="row">
+                    <div class="col-md-3">
+                        <ul class="social_left">
+                            <li class="facebook"><a href="#"><i class="fa fa-facebook-square fa-3x"></i></a></li>
+                            <li class="fb_text">
+                                <h4><a href="#">Follow us on Facebook</a></h4>
+                            </li>
+                            <div class="clearfix"></div>
+                        </ul>
+                    </div>
+                    <div class="col-md-3">
+                        <ul class="social_left">
+                            <li class="facebook"><a href="#"><i class="fa fa-twitter-square fa-3x"></i></a></li>
+                            <li class="fb_text">
+                                <h4><a href="#">Follow us on Twitter</a></h4>
+                            </li>
+                            <div class="clearfix"></div>
+                        </ul>
+                    </div>
+                    <div class="col-md-3">
+                        <ul class="social_left">
+                            <li class="facebook"><a href="#"><i class="fa fa-google-plus-square fa-3x"></i></a></li>
+                            <li class="fb_text">
+                                <h4><a href="#">Follow us on Google +</a></h4>
+                            </li>
+                            <div class="clearfix"></div>
+                        </ul>
+                    </div>
+                    <div class="col-md-3">
+                        <ul class="social_left">
+                            <li class="facebook"><a href="#"><i class="fa fa-github-square fa-3x"></i></a></li>
+                            <li class="fb_text">
+                                <h4><a href="#">Follow us on Github</a></h4>
+                            </li>
+                            <div class="clearfix"></div>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer_bottom">
+            <div class="copy">
+                <p>Copyright &copy; 2014 <a href="https://riftbit.com">RiftBit</a>. Design by <a href="http://www.templategarden.com" rel="nofollow">TemplateGarden</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <script src="{{ url_for('.static', filename='js/jquery.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('.static', filename='js/responsive-nav.js') }}"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function ($) {
+        $(".scroll").click(function (event) {
+            event.preventDefault();
+            $('html,body').animate({scrollTop: $(this.hash).offset().top}, 1200);
+        });
+    });
+    </script>
+    <script type="application/x-javascript">
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+    </script>
+
+</body>
+</html>
