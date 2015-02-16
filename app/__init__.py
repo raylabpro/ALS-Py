@@ -3,7 +3,7 @@ from flask.ext.sqlalchemy import SQLAlchemy
 from flask.ext.mail import Mail
 from flask_jsonrpc import JSONRPC
 
-from config import ADMINS, MAIL_SERVER, MAIL_PORT, MAIL_USERNAME, MAIL_PASSWORD, API_URL
+from config import ADMINS, MAIL_SERVER, MAIL_PORT, MAIL_USERNAME, MAIL_PASSWORD, API_URL, basedir
 
 
 app = Flask(__name__)
@@ -28,7 +28,7 @@ if not app.debug and MAIL_SERVER != '':
 if not app.debug:
     import logging
     from logging.handlers import RotatingFileHandler
-    file_handler = RotatingFileHandler('tmp/flapi.log', 'a', 1 * 1024 * 1024, 10)
+    file_handler = RotatingFileHandler(basedir + '/tmp/flapi.log', 'a', 1 * 1024 * 1024, 10)
     file_handler.setLevel(logging.INFO)
     file_handler.setFormatter(logging.Formatter('%(asctime)s %(levelname)s: %(message)s [in %(pathname)s:%(lineno)d]'))
     app.logger.addHandler(file_handler)
