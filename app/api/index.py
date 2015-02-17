@@ -3,7 +3,7 @@ from app.lib import auth, log_db
 from flask import g
 
 
-@jsonrpc.method('Log.add(category=str, level=str, message=str, timestamp=int, expires_at=str) -> str', validate=True)
+@jsonrpc.method('Log.add(category=str, level=str, message=str, timestamp=int, expires_at=int) -> str', validate=True)
 @auth.requires_rpc_auth
 def addLog(category, level, message, timestamp, expires_at):
     log_id = log_db.addLog(g.auth.username, category, level, message, timestamp, expires_at)
