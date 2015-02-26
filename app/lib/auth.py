@@ -4,26 +4,14 @@ from flask import request, Response, g
 from app import jsonrpc
 from flask_jsonrpc.exceptions import InvalidCredentialsError
 from config import MONGODB_HOST, MONGODB_PORT
+from log_db import connectCollection
 
 def check_auth(username, password):
-    """This function is called to check if a username /
-    password combination is valid.
     """
-    try:
-        mongo = pymongo.MongoClient(MONGODB_HOST, MONGODB_PORT)
-    except:
-        raise InvalidCredentialsError("Error: Unable to connect to the server")
-    try:
-        mongodb = mongo.apiDB
-    except:
-        raise InvalidCredentialsError("Error: Unable to connect to db")
-    try:
-        mongodbc = mongodb.users
-    except:
-        raise InvalidCredentialsError("Error: Unable to connect to the collection")
-
+        This function is called to check if a username / password combination is valid.
+    """
+    mongodbc = connectCollection("apiDB", "users", need_index=False)
     user = mongodbc.find_one({'login': username})
-
     if user != None:
         return user["password"] == password
     else:
