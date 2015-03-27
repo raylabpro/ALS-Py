@@ -45,6 +45,8 @@ def getLog(db, collection, search_filter={}, limit=1, offset=0, sort_field="time
         limit = 1000
     if sort_type is "ASC":
         sort_type=pymongo.ASCENDING
+    elif sort_type is "asc":
+        sort_type=pymongo.ASCENDING
     else:
         sort_type=pymongo.DESCENDING
     mongodbc = connectCollection(db, collection, search_filter)
@@ -113,16 +115,3 @@ def prepareSearchFilter(search_filter):
             for element in tmp_list:
                 search_filter['_id'].append(ObjectId(element))
     return search_filter
-
-
-
-
-
-
-
-
-
-
-
-
-
