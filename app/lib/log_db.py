@@ -43,9 +43,9 @@ def addCustomLog(db, collection, level, message, timestamp, expires_at, tags=[],
 def getLog(db, collection, search_filter={}, limit=1, offset=0, sort_field="timestamp", sort_type="ASC"): #or DESC
     if limit > 1000:
         limit = 1000
-    if sort_type is "ASC":
+    if sort_type == 'ASC':
         sort_type=pymongo.ASCENDING
-    elif sort_type is "asc":
+    elif sort_type == 'asc':
         sort_type=pymongo.ASCENDING
     else:
         sort_type=pymongo.DESCENDING
