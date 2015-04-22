@@ -14,7 +14,7 @@ MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
 ADMINS = ['admin@site.ru']
 
 # mongodb config
-MONGODB_HOST = '127.0.0.1'
+MONGODB_HOST = '172.16.104.23'
 MONGODB_PORT = 27017
 
 # server config
